@@ -1,55 +1,66 @@
-# Prerequisites
-*.d
+# Reverse Engineering Tools
+# IDA Databases & Temp Files
+*.idb
+*.i64
+*.id0
+*.id1
+*.id2
+*.nam
+*.til
+*.dmp
 
-# Object files
-*.o
-*.ko
-*.obj
+# Ghidra / Binary Ninja
+*.gpr
+*.rep/
+*.bndb
+
+# Binaries, Core Dumps & Target Files
+# Provided CTF target files and large memory dumps
+*.raw
+*.bin
 *.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
+*.exe
 *.dll
 *.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
 *.out
-*.app
-*.i*86
-*.x86_64
-*.hex
 
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
+# Crash dumps
+core
+core.*
+*.crash
 
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# Network Captures
+*.pcap
+*.pcapng
 
-# debug information files
-*.dwo
+# Compressed Archives
+*.zip
+*.tar.gz
+*.tgz
+*.7z
+*.rar
+
+# Exploit Dev & Scripting Environments
+# Pwntools, GDB, and Debugger logs
+.gdb_history
+pwndbg-*.log
+gef-*.log
+
+# C/C++ Build Artifacts
+*.o
+*.a
+*.ko
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# OS & Editor Specifics
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
