@@ -1,0 +1,16 @@
+python3 - <<'PY'
+from pathlib import Path
+
+bits = Path("digits.bin").read_text().strip()
+bits = "".join(c for c in bits if c in "01")
+
+raw = bytes(int(bits[i:i+8], 2) for i in range(0, len(bits), 8))
+Path("out.bin").write_bytes(raw)
+
+print("decoded bytes:", len(raw))
+print("first 64 bytes:", raw[:64])
+PY
+
+file out.bin
+strings -n 6 out.bin | head -50
+xxd -l 64 out.bin
